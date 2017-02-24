@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SimpleGrid</title>
+		<style>
+  /* css inspired by  Vikas Chauhan : http://codepen.io/vikasford/pen/Cltyj greatly modified*/    
+            
+            #zone{
+  background: #eee;
+               padding:1px; 
+            }
+           #main {
+               width:600px;
+                margin-top:50px;
+                margin-left:50px;
+
+            }
+            #main p{
+                
+                               text-align:center;
+               font-size: 2em;
+               font-weight: bold;
+            }
+            
+ 
+.grid-table {
+		margin-bottom: 20px;
+		border-collapse:collapse;
+		font-family: 'Lato', Calibri, Arial, sans-serif;
+                border-radius: 3px;
+               -webkit-border-radius: 3px;
+               -moz-border-radius: 3px;
+	}
+
+    .grid-table .doscroll tr:hover {
+         background-image: -moz-linear-gradient(#E3F7FF,#B7E7FB);
+         background-image: -webkit-gradient(linear,#E3F7FF,#B7E7FB);
+         background-image: linear-gradient(#E3F7FF,#B7E7FB);
+
+        }
+
+
+
+    .grid-table th:hover {
+        cursor: pointer;
+        cursor:hand;
+             background-image: -moz-linear-gradient(#E3F7FF,#B7E7FB);
+             background-image: -webkit-gradient(linear,#E3F7FF,#B7E7FB);
+             background-image: linear-gradient(#E3F7FF,#B7E7FB);
+
+    }
+	.grid-table th {
+		color: #000;
+		padding: 0.7em 1em 0.7em 1.15em;
+		font-size: 1em;
+        text-align: center;
+        border:1px solid #E0E1E3;
+
+        background-image: linear-gradient(#FFFFFF,#F5F6F8);
+
+	}
+    .grid-table td {
+		color: #000;
+		padding: 0.7em 1em 0.7em 1.15em;
+		text-shadow: 0 0 1px rgba(255,255,255,0.1);
+		font-size: 1em;
+        text-align: center;
+         border-right:1px solid #E3E4E6; 
+        border-left: :1px solid #E3E4E6;
+
+  border-bottom:1px solid #E0E1E3;
+
+	}
+
+	.grid-table-1 {
+		background: #fff;
+	}
+
+            
+
+	.grid-table-1 tr:hover {
+		background: rgba(0,0,0,0.19);
+	}
+
+
+		</style>
+   <script src="simpleGrid.js"></script>
+
+  </head>
+
+  <body>
+<div id="main">
+    <p>Demo Grid</p>
+        <div id="zone"></div>
+    </div>
+<script>
+// This json strings should be provides by the back-end : here for demonstration purpose
+
+ var aConfig ='{"width":"600px","height":"400px"}';
+ var aHeader = '{"arr":[{"name":"firstname","type":"string","title":"first name","width":"250px"},{"name":"lastname","type":"string","title":"Last name","width":"250px"},{"name":"age","type":"integer","title":"Age","width":"100px"}]}';
+
+var aData = '{"arr":[{"firstname":"Philippe","lastname":"Meyer","age":54},{"firstname":"John","lastname":"Doe","age":48},{"firstname":"Martha","lastname":"Doe","age":51},{"firstname":"Eleonor","lastname":"Rigby","age":75},{"firstname":"Edward","lastname":"Norton","age":47},{"firstname":"Philippe","lastname":"Meyer","age":54},{"firstname":"John","lastname":"Doe","age":48},{"firstname":"Martha","lastname":"Doe","age":51},{"firstname":"Eleonor","lastname":"Rigby","age":75},{"firstname":"Edward","lastname":"Norton","age":47}]}';
+    
+    
+    
+var myGrid = new SimpleGrid("zone","tableId","grid-table grid-table-1");
+myGrid.SetConfig(aConfig); 
+myGrid.SetHeader(aHeader);
+myGrid.SetData(aData);
+myGrid.Draw();
+
+</script>
+
+  </body>
+</html>
