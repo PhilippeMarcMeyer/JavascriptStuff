@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <h3>Testeur couleur créé avec le framework vue.js</h3>
+    <h3>Colour tests with framework vue.js</h3>
 <div id="app">
 	<select v-model='selected' size='8' class='mySelect'>
 		<option v-for='option in options' v-bind:value='option.value'>
@@ -46,7 +46,7 @@
 	</select>
     <br />    <br />
     value : <input v-model="val"> text : <input v-model="txt">
-    <button v-on:click="ajouter">Ajouter</button>
+    <button v-on:click="ajouter">Add new colour</button>
     <br />
     <br />
      <div v-bind:style='{background:selected}'  id='col' ><p style='color:white'>{{ selected }}</p><p style='color:black'>{{ selected }}</p></div>
@@ -63,12 +63,12 @@ var app = new Vue({
     val:'',
     txt:'',
     options: [
-        {text : 'rouge' , value : 'red'},
-        {text : 'bleu' , value : 'blue'},
-        {text : 'vert' , value : 'green'},
-        {text : 'noir' , value : 'black'},
-        {text : 'marron' , value : 'grey'},
-        {text : 'rose' , value : 'pink'},
+        {text : 'red' , value : 'red'},
+        {text : 'blue' , value : 'blue'},
+        {text : 'green' , value : 'green'},
+        {text : 'black' , value : 'black'},
+        {text : 'grey' , value : 'grey'},
+        {text : 'pink' , value : 'pink'},
         {text : 'violet' , value : 'purple'}
     ]
   },
