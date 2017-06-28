@@ -3,13 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <title>Load a select-one</title>
+	<style>
+		select{
+			width:200px;
+			margin-bottom:20px;
+		}
+		label{
+			display: inline-block;
+			width:120px;
+			margin-bottom:20px;
+		}
+	</style>
   </head>
   <body>
+		<p>Load a drop down menu from another : </p>
+		<label for="one">Language</label>
   		<select id="one">
 			<option value="0"></option>
-			<option value="1">Load</option>
+			<option value="1">English</option>
+			<option value="2">French</option>
+			<option value="3">German</option>
+			<option value="4">Spanish</option>
 		</select>
 		
+			<br />
+			
+		<label for="two">Two</label>
 		<select id="two">
 			<option value="0"></option>
 		</select>
@@ -26,21 +45,29 @@
 		  if(mySelect.type == "select-one"){
 			mySelect.length = 1;
 			var arr = listForSelect.split(",");
-			for(var i = 0;i< arr.length;i+=2){
-				elem = doc.createElement("option"); 
-				elem.value=arr[i];
-				elem.text=arr[i+1];
-				if(defaultValue==arr[i]){
-					 elem.selected = true;
+			var isEven = (arr.length%2==0);
+			if(isEven){
+				for(var i = 0;i< arr.length;i+=2){
+					elem = doc.createElement("option"); 
+					elem.value=arr[i];
+					elem.text=arr[i+1];
+					if(defaultValue==arr[i]){
+						 elem.selected = true;
+					}
+					mySelect.appendChild(elem);
 				}
-				mySelect.appendChild(elem);
 			}
 		  }
 	   }
 	}
-	
+
       $("#one").change(function() {
-		 doLoadSelect("two","1,un,2,deux,3,trois,4,quatre","2");
+			var defaultValue="1";
+			var arrNumbers = ["","1,one,2,two,3,three,4,four","1,un,2,deux,3,trois,4,quatre","1,eins,2,zwei,3,drei,4,vier","1,uno,2,dos,3,tres,4,quatro"];
+			var lineSelected = $(this).val()
+			var	listForSelect=arrNumbers[lineSelected];
+			var IdOfSelect = "two";
+			doLoadSelect(IdOfSelect,listForSelect,defaultValue);
 	  });
     </script>
   </body>
