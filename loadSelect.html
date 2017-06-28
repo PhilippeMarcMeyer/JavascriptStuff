@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Load a select-one</title>
+  </head>
+  <body>
+  		<select id="one">
+			<option value="0"></option>
+			<option value="1">Load</option>
+		</select>
+		
+		<select id="two">
+			<option value="0"></option>
+		</select>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+    <script>
+	function doLoadSelect(IdOfSelect,listForSelect,defaultValue){
+		var elem,doc,mySelect;
+		doc = document;
+		mySelect = doc.getElementById(IdOfSelect);
+	   if(mySelect){
+		  if(mySelect.type == "select-one"){
+			mySelect.length = 1;
+			var arr = listForSelect.split(",");
+			for(var i = 0;i< arr.length;i+=2){
+				elem = doc.createElement("option"); 
+				elem.value=arr[i];
+				elem.text=arr[i+1];
+				if(defaultValue==arr[i]){
+					 elem.selected = true;
+				}
+				mySelect.appendChild(elem);
+			}
+		  }
+	   }
+	}
+	
+      $("#one").change(function() {
+		 doLoadSelect("two","1,un,2,deux,3,trois,4,quatre","2");
+	  });
+    </script>
+  </body>
+</html>
+
