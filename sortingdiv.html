@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>stackoverflow.com/questions/46813957/2-arrays-in-json</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+</style>
+</head>
+<body>
+
+sort by:
+<select id="sort">
+    <option value='1' selected>most recent</option>
+    <option value='2'>from highest price</option>
+    <option value='3'>from lowest price</option>
+</select><br /><br />
+<div id="item_list">
+
+</div>
+
+
+<script>
+var obj = {};
+
+obj.pointer = document.getElementById("item_list");
+obj.list = [
+{"name":"orange","price":1.5,"id":1},
+{"name":"banane","price":1.2,"id":2},
+{"name":"kumkat","price":8.25,"id":3}
+];
+obj.draw=function(){
+ obj.pointer.innerHTML="";
+ html="";
+ for(var i=0;i<this.list.length;i++){
+	html+="<div id='"+this.list[i].id+"'>";
+	html+="<span class='name'>"+this.list[i].name+"</span>";
+	html+="<span class='price'>"+this.list[i].price+"</span>";
+	html+="</div>"
+ }
+  obj.pointer.innerHTML=html;
+}
+obj.sort=function(way){
+	if(way=='1'){
+		this.list.sort(compareId)
+	}else if(way=='2'){
+		this.list.sort(compareHigherPrice)
+	}else if(way=='3'){
+		this.list.sort(compareLowerPrice)
+	}
+
+}
+
+
+var arr3 = myArray1.concat(myArray1);
+var myResult = arrayToObjectArray(arr3);
+function compareHigherPrice(a, b) {
+  return b.price - a.price;
+}
+
+function compareId(a, b) {
+  return a.id - b.id;
+}
+
+function compareLowerPrice(a, b) {
+  return a.price - b.price;
+}
+
+obj.draw();
+var select=document.getElementById("sort");
+select.addEventListener("change", function(){
+ obj.sort(this.value);
+ obj.draw();
+});
+
+</script>
+
+
+
+</body>
+</html>

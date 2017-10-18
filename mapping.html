@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>stackoverflow.com/questions/46813957/2-arrays-in-json</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+
+
+<script>
+var myArray1 =  [ "Orange:10", "Orange:5", "Banana:20", "Apple:5" ];
+var myArray2 = [ "Orange:5", "Banana:10", "Apple:15" ];
+
+var myArray1b = arrayToObjectArray(myArray1);
+var myArray2b = arrayToObjectArray(myArray2);
+
+var myResult = [myArray1b,myArray2b];
+
+console.log(myResult);
+
+function arrayToObjectArray(arr){
+var arr2 = arr.map(function(item) {
+var items = item.split(":");
+item = {};
+item.fruit = items[0];
+item.value = items[1];
+
+return item;
+});
+return arr2;
+}
+ 
+</script>
+
+
+
+</body>
+</html>
