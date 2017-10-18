@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>stackoverflow.com/questions/46809391</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	table {width:25%;background:#ccc;border:1px solid black;text-align:left;}
+	td,tr {background:white;}
+	th:first-of-type{width:20%;}
+</style>
+</head>
+<body>
+
+<div id="table"></div>
+
+<table id="majorCities">
+
+</table>
+  
+<script>
+
+(function () {
+var mySpace = window || {};
+mySpace.cities = {};
+mySpace.cities.pointer = document.getElementById("majorCities");
+mySpace.cities.names = ["Select","City"];
+mySpace.cities.data = [{"name":"Paris"},{"name":"New Delhi"},{"name":"Washington"},{"name":"Bangkok"},{"name":"Sydney"}];
+
+mySpace.cities.draw = function(){
+this.pointer.innerHTML="";
+var html = "";
+html+="<tr>"
+	for(var i=0;i < this.names.length;i++){
+		html+="<th>"+this.names[i];
+		html+="</th>"
+	}
+html+="</tr>"
+	for(var i=0;i < this.data.length;i++){
+		html+="<tr>"
+		html+="<td><input id='"+this.data[i].name+"' type='checkbox'/></td>"
+		html+="<td>"+this.data[i].name+"</td>"	
+		html+="</tr>"
+	}
+this.pointer.innerHTML=html;
+}
+mySpace.cities.draw();
+mySpace.cities.pointer.addEventListener("click", function(e){
+  if(e.target.type === 'checkbox'){
+	var checked = e.target.checked;
+	var city = e.target.id;
+	console.log(city+":checked="+checked);
+  }
+
+});
+
+})();
+
+
+ 
+</script>
+
+
+
+</body>
+</html>

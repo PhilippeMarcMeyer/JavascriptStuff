@@ -10,3 +10,5 @@ Function to play with localstorage
 
 <a href="https://jsfiddle.net/fy3zzn2d/" target="_BLANK">jsFiddle</a>
 
+10/18/2017 : autoTable.html, an answer to a stackoverflow question
+
