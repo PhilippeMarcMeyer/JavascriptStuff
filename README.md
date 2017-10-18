@@ -7,4 +7,6 @@ What I want to do with this repository is adding usefull bunch of functions
 Function to play with localstorage
 
 10/18/2017 : studying Git/branching and push a new little function toast() to make a small toast message
-<script async src="//jsfiddle.net/fy3zzn2d/embed/"></script>
+
+<a href="https://jsfiddle.net/fy3zzn2d/" target="_BLANK">jsFiddle</a>
+
