@@ -27,7 +27,7 @@ function camelCase(sentence) {
 }
 
 function sayHello(){
-	console.log("Hello from local Git number 1");
+	console.log("Hello from local Git number 1 and 2");
 }
 
 
