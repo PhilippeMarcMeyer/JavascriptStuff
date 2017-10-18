@@ -25,3 +25,7 @@ function camelCase(sentence) {
     }
     return words.join(" ");
 }
+
+function sayHello(){
+	console.log("Hello from local Git number 2");
+}
