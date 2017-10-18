@@ -26,11 +26,10 @@ function camelCase(sentence) {
     return words.join(" ");
 }
 
-<<<<<<< HEAD
 function sayHello(){
 	console.log("Hello from local Git number 2");
 }
-=======
+
 
 function toast(htmlZone, toastId, onParent, style) {
     this.style = (style || "display:none;position:absolute;padding:4px;color:white;background-color:rgba(90, 90, 90, 0.7);border-radius:5px;text-align:center;cursor:hand;cursor:pointer;padding: 3px;border: 1px solid #555;width:300px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);")
@@ -101,4 +100,3 @@ function toast(htmlZone, toastId, onParent, style) {
         }
     }
 }
->>>>>>> 63c3d2bd9a67611c57ec49c36b58f63026ef0141
