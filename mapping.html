@@ -14,25 +14,43 @@
 var myArray1 =  [ "Orange:10", "Orange:5", "Banana:20", "Apple:5" ];
 var myArray2 = [ "Orange:5", "Banana:10", "Apple:15" ];
 
-var myArray1b = arrayToObjectArray(myArray1);
-var myArray2b = arrayToObjectArray(myArray2);
+var myObjectArray1 = arrayToObjectArray(myArray1);
+var myObjectArray2 = arrayToObjectArray(myArray2);
 
-var myResult = [myArray1b,myArray2b];
+var myOnlyOneObjectArray= myObjectArray1.concat(myObjectArray2);
+
+var myResult = mergeObjectArray(myOnlyOneObjectArray,"fruit","value")
 
 console.log(myResult);
 
 function arrayToObjectArray(arr){
+// Map allows us to return a transformed row for each array row
 var arr2 = arr.map(function(item) {
-var items = item.split(":");
-item = {};
-item.fruit = items[0];
-item.value = items[1];
-
-return item;
+	var items = item.split(":");
+	item = {};
+	item.fruit = items[0];
+	item.value = parseInt(items[1]);
+	return item;
 });
 return arr2;
 }
  
+ 
+ function mergeObjectArray(arr,compareKey,addKey){
+	// Pay attention : we loop thru the same arr searching from end to start (i)
+	// and check if the same fruit already exist (second loop j from start to one row before i)
+	// that way we can sum any number of concated arrays and even dupes in the same original array
+ 	for(var i = arr.length-1; i >=0;i--){
+		for(var j = 0; j < arr.length -1;j++){ // Note that an objet property can be accessed also this way arr[i]["fruit"] == arr[i].fruit == arr[i][compareKey]
+			if((arr[i][compareKey]==arr[j][compareKey]) && (i!=j)){ // if the fruit (compare key) is the same (has been found)
+				arr[j][addKey]+=arr[i][addKey];  // we sum 
+				arr.splice(i, 1); // we get rid of row (from end to start i, not to mess with the offset of the loop)
+				break;
+			}
+		}	
+	}
+return arr;
+}
 </script>
 
 
