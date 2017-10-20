@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StackOverflow answers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+<body>
+
+<div id="chart">
+
+</div>
+		
+
+ <script>
+const req = new XMLHttpRequest();
+var geography = [];
+req.onreadystatechange = function(event) {
+    // XMLHttpRequest.DONE === 4
+    if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+           geography = JSON.parse(this.responseText);
+		   console.log(geography);
+		   alert("Great Success : check console !");
+        } else {
+            alert("Something has gone really Bad !");
+        }
+    }
+};
+
+req.open('GET', 'data.json', true);
+req.send(null);
+ </script>
+
+
+</body>
+</html>
