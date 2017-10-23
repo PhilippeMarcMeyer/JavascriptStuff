@@ -29,30 +29,59 @@ https://stackoverflow.com/questions/46883149
 <script>
 $(".calculator").on("change",function(){
 
-
-var ok = true;
+var isNegative = false;
+var hours = "00:00";
 var inputStart = $("#start").val();
 var inputEnd = $("#end").val();
 
-var hours1 = getHours(inputStart);
-var minutes1 = getMinutes(inputStart);
+if(inputStart!="" && inputEnd != ""){
 
-var hours2 = getHours(inputEnd);
-var minutes2 = getMinutes(inputEnd);
+	var seconds1 = stringToSeconds(inputStart);
+	var seconds2 = stringToSeconds(inputEnd);
 
-var hours3 = hours2 - hours1;
-var minutes3 = minutes2 - minutes1;
-if(minutes3<0){
-	hours3-=1;
-	minutes3+=60;
+	var secondsDiff = seconds2 - seconds1;
+
+	var milliDiffs = secondsDiff * 1000;
+
+	if(milliDiffs < 0){
+		milliDiffs = milliDiffs *-1;
+		isNegative = true;
+	}
+
+	var diff = new Date(milliDiffs);
+	hours = diff.toUTCString();
+
+	var regex = new RegExp(/[0-9]{2}:[0-9]{2}:[0-9]{2}/);
+	var arr = hours.match(regex);
+	hours = arr[0];
+	arr = hours.split(":");
+	hours=arr[0]+":"+arr[1];
+
+	if(isNegative){
+		hours = "-"+hours;
+	}
+	$("#hours").val(hours);  
+
+	var date1 = new Date(seconds1*1000);
+	var str1 = date1.toUTCString();
+	arr = str1.match(regex);
+	hours = arr[0];
+	arr = hours.split(":");
+	hours=arr[0]+":"+arr[1];
+
+	$("#start").val(hours);  
+
+	var date2 = new Date(seconds2*1000);
+	var str2 = date2.toUTCString();
+	arr = str2.match(regex);
+	hours = arr[0];
+	arr = hours.split(":");
+	hours=arr[0]+":"+arr[1];
+
+	$("#end").val(hours);  
+
+
 }
-
-$("#start").val(timeElementToString(hours1)+":"+timeElementToString(minutes1));  
-$("#end").val(timeElementToString(hours2)+":"+timeElementToString(minutes2));  
-
-
-$("#hours").val(timeElementToString(hours3)+":"+timeElementToString(minutes3));  
-
 
 });
 
@@ -65,6 +94,25 @@ function timeElementToString(timeElement){
 			
 		return output;
 }
+
+function stringToSeconds(input){
+	var hours = 0;
+	var arr=input.split(":");
+	if(arr.length==2){
+		hours=parseInt(arr[0]);
+		minutes=parseInt(arr[1]);
+
+		if(isNaN(hours)){
+
+            hours = 0;
+        }
+		if(isNaN(minutes)){
+
+            minutes = 0;
+        }
+	}
+	return hours*3600+60*minutes;
+}
       
 function getHours(str){
 	var hours = 0;
@@ -73,7 +121,9 @@ function getHours(str){
 		hours=parseInt(hoursArray[0]);
 		if(!isNaN(hours)){
 			if(hours < 0) hours = 24 + hours;
-		}
+		}else{
+            hours = 0;
+        }
 	}
 	return hours;
 }
@@ -83,11 +133,10 @@ function getMinutes(str){
 	var minutesArray=str.split(":");
 	if(minutesArray.length==2){
 		minutes=parseInt(minutesArray[1]);
-		if(!isNaN(minutes)){
-			if(minutes < 0) minutes = 0;
-			if(minutes > 59) minutes = 59;
+		if(isNaN(minutes)){
 
-		}
+            minutes = 0;
+        }
 	}
 	return minutes;
 }	
