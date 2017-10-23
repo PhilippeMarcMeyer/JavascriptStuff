@@ -114,32 +114,7 @@ function stringToSeconds(input){
 	return hours*3600+60*minutes;
 }
       
-function getHours(str){
-	var hours = 0;
-	var hoursArray=str.split(":");
-	if(hoursArray.length==2){
-		hours=parseInt(hoursArray[0]);
-		if(!isNaN(hours)){
-			if(hours < 0) hours = 24 + hours;
-		}else{
-            hours = 0;
-        }
-	}
-	return hours;
-}
 
-function getMinutes(str){
-	var minutes = 0;
-	var minutesArray=str.split(":");
-	if(minutesArray.length==2){
-		minutes=parseInt(minutesArray[1]);
-		if(isNaN(minutes)){
-
-            minutes = 0;
-        }
-	}
-	return minutes;
-}	
 
 </script>
 
