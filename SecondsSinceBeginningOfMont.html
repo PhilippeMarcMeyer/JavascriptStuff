@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Toast Example Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body>
+
+
+
+<script>
+
+	var now = new Date();
+	var dayOne = new Date();
+	
+    var days = dayOne.getDay();
+		dayOne.setDay(month);
+	
+	var month = minDate.getMonth();
+	var year = minDate.getFullYear();
+
+var dayOne = new Date(now.getFullYear(), now.getMonth() + 1, 0, 0, 0, 0, 0);
+var distance = now - dayOne;
+var totalSeconds = Math.floor(distance/1000);
+
+// After JSON.parse
+var todos=[{"due":"28/10/2017","task":"80"},{"due":"06/10/2017","task":"15"},{"due":"06/04/2017","task":"15"},{"due":"06/02/2017","task":"15"}];
+var sum = 0;
+todos.forEach(function(ele){ 
+	var minDate = new Date();
+	var month = minDate.getMonth()+1-6;
+	var year = minDate.getFullYear();
+	if(month < 1){
+		month+=6;
+		year-= 1;
+	}
+	minDate.setMonth(month);
+	minDate.setYear(year);
+
+	var arr = ele.due.split("/");
+	if(arr.length==3){
+		var dueDate = new Date(arr[2],arr[1],arr[0]);
+		if(dueDate>minDate){
+			sum+=parseInt(ele.task); 
+
+		}
+	}
+});
+console.log(sum);
+</script>
+
+</body>
+</html>

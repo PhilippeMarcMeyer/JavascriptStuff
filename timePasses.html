@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Times difference</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+label {
+width: 100px;
+}
+</style>
+<body>
+<p>output correct format 24 hour after calculation</p>
+https://stackoverflow.com/questions/46883149
+
+<form>
+<label for="start">Start</label><input type="text" id="start" class="calculator"></input><br />
+<label for="end">End</label><input type="text" id="end" class="calculator"></input><br />
+<label for="hours">Hours</label><input type="text" id="hours" readonly="readonly"></input>
+</form>
+
+
+  
+<script>
+$(".calculator").on("change",function(){
+
+
+var ok = true;
+var inputStart = $("#start").val();
+var inputEnd = $("#end").val();
+
+var hours1 = getHours(inputStart);
+var minutes1 = getMinutes(inputStart);
+
+var hours2 = getHours(inputEnd);
+var minutes2 = getMinutes(inputEnd);
+
+var hours3 = hours2 - hours1;
+var minutes3 = minutes2 - minutes1;
+if(minutes3<0){
+	hours3-=1;
+	minutes3+=60;
+}
+
+$("#start").val(timeElementToString(hours1)+":"+timeElementToString(minutes1));  
+$("#end").val(timeElementToString(hours2)+":"+timeElementToString(minutes2));  
+
+
+$("#hours").val(timeElementToString(hours3)+":"+timeElementToString(minutes3));  
+
+
+});
+
+function timeElementToString(timeElement){
+	var output = timeElement.toString();
+	if(timeElement < 10 && timeElement >=0)
+		output = "0"+output;
+	else if(timeElement < 0 && timeElement >=-10)
+		output = "-0"+Math.abs(output);
+			
+		return output;
+}
+      
+function getHours(str){
+	var hours = 0;
+	var hoursArray=str.split(":");
+	if(hoursArray.length==2){
+		hours=parseInt(hoursArray[0]);
+		if(!isNaN(hours)){
+			if(hours < 0) hours = 24 + hours;
+		}
+	}
+	return hours;
+}
+
+function getMinutes(str){
+	var minutes = 0;
+	var minutesArray=str.split(":");
+	if(minutesArray.length==2){
+		minutes=parseInt(minutesArray[1]);
+		if(!isNaN(minutes)){
+			if(minutes < 0) minutes = 0;
+			if(minutes > 59) minutes = 59;
+
+		}
+	}
+	return minutes;
+}	
+
+</script>
+
+</body>
+</html>
