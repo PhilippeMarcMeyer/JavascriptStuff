@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Times difference</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+label {
+width: 100px;
+}
+</style>
+<body>
+<p>select Only first column checkbox jquery</p>
+https://stackoverflow.com/questions/46903305
+
+<table border="1" width="300">
+    <tr>
+        <th>
+            <input type="checkbox" id="selectAll" />
+        </th>
+        <th colspan="2">select all!</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="firstRow"/> </td>
+        <td>test!</td>
+        <td>hi!</td>
+    </tr>
+
+     <tr>
+        <td><input type="checkbox" class="firstRow"/> </td>
+        <td>test!</td>
+        <td>hi!</td>
+    </tr>
+
+
+
+     <tr>
+        <td><input type="checkbox" class="firstRow"/> </td>
+        <td>test!</td>
+        <td><input type="checkbox" id="1"/></td>
+    </tr>
+
+</table>
+
+  
+<script>
+
+
+  $('#selectAll').click(function(e){
+        var table= $(e.target).closest('table');
+		table.find('td:first-child input:checkbox').prop('checked',this.checked);
+    });
+
+</script>
+
+</body>
+</html>
