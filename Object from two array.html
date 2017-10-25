@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JQuery dialog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+</head>
+<style>
+label {
+width: 100px;
+}
+</style>
+<body>
+<p>Object from two array (parent and child elements)</p>
+https://stackoverflow.com/questions/46930966
+<br />
+
+
+<script>
+var links = [
+  {
+    code: 'home'
+  },
+  {
+    code: 'contact'
+  },
+];
+
+var subLinks = [
+  {
+    code: 'some subLink',
+    parent: {
+      code: 'home'
+    }
+  },
+  {
+    code: 'some subLink 2',
+    parent: {
+      code: 'home'
+    }
+  },
+  {
+    code: 'some subLink 3',
+    parent: {
+      code: 'contact'
+    }
+  }
+];
+/*
+var menu = {};
+
+for(var i=0;i<links.length;i++){
+var prop = links[i].code;
+var child;
+	menu[prop]=[];
+	for(var j=0;j<subLinks.length;j++){
+		var parent = subLinks[j].parent.code;
+		if(parent==prop){
+			child = subLinks[j].code;
+		    menu[prop].push(child);
+		}	
+	}
+}
+*/
+var menu = subLinks.reduce((c, v) => {
+    if(c.hasOwnProperty(v.parent.code)) c[v.parent.code].push(v.code);
+    else c[v.parent.code] = [v.code];
+    return c; 
+}, {});
+
+console.log(menu);
+</script>
+
+</body>
+</html>

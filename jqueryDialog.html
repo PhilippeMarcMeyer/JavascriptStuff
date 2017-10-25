@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JQuery dialog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+</head>
+<style>
+label {
+width: 100px;
+}
+</style>
+<body>
+<p>Need to create window dialog box using jQuery</p>
+https://stackoverflow.com/questions/46924555
+
+
+<div id="dialog" title="Warning" style="display:none">
+<div>
+<p>Empty won't allow</p>
+</div>
+</div>
+<br />
+<button onclick="show('#dialog')">Click me</button>
+<script>
+function show(id){
+$(id).dialog();
+
+}
+
+</script>
+
+</body>
+</html>
