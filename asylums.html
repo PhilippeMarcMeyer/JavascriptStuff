@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>stackoverflow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+label {
+width: 100px;
+}
+</style>
+<body>
+<p>javascript- pushing an array of object into another failed
+</p>
+https://stackoverflow.com/questions/47221795
+
+
+<script>
+
+    var asylum = [];
+
+
+ var rooms = [
+    {
+      "id": 1001,
+      "room": "room 1"
+    },
+    {
+      "id": 1002,
+      "room": "room 2"
+    },
+    {
+      "id": 1003,
+      "room": "room 3"
+    },
+    {
+      "id": 1004,
+      "room": "room 4"
+    }
+  ];
+
+ var patients = [
+    {
+        "id": 10,
+        "room": "room 1",
+        "patient_name": "John"
+    },
+    {
+        "id": 11,
+        "room": "room 1",
+        "patient_name": "Jane"
+    },
+    {
+        "id": 12,
+        "room": "room 1",
+        "patient_name": "Joe"
+    },
+    {
+        "id": 20,
+        "room": "room 2",
+        "patient_name": "Matt"
+    },
+    {
+        "id": 30,
+        "room": "room 3",
+        "patient_name": "Alexa"
+    }
+  ];
+  
+  var asylum = [];
+  
+var aRoomWithPatients,apatient,rooma,roomb,name;
+for (var i = 0; i < rooms.length; i++) {
+   aRoomWithPatients = {};
+   aRoomWithPatients.id = rooms[i].id;
+   aRoomWithPatients.room = rooms[i].room;
+   aRoomWithPatients.patients = [];
+   asylum.push(aRoomWithPatients);
+  for (var j = 0; j < patients.length;  j++) {
+  rooma = rooms[i].room;
+  roomb = patients[j].room;
+  name = patients[j].patient_name;
+    if (rooma === roomb) {
+		apatient = {};
+		apatient.id = patients[j].id;
+		apatient.room = patients[j].room;
+		apatient.patient_name = name;
+        asylum[i].patients.push(apatient);
+    }
+  }
+}
+console.log(asylum);
+</script>
+
+</body>
+</html>

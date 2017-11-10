@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>stackoverflow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body>
+<p>Add values from Object in Array Object in Javascript
+
+</p>
+https://stackoverflow.com/questions/47222546
+
+
+<script>
+var vehicleAvailabilities = [
+  {id: 1, day: "1", value: true},
+  {id: 2, day: "2", value: true},
+  {id: 3, day: "3", value: true},
+  {id: 4, day: "4", value: true},
+  {id: 5, day: "5", value: true},
+  {id: 6, day: "6", value: false},
+  {id: 7, day: "7", value: false}
+];
+const weekdayMap = {
+  1: 'Montag',
+  2: 'Dienstag',
+  3: 'Mittwoch',
+  4: 'Donnerstag',
+  5: 'Freitag',
+  6: 'Samstag',
+  7: 'Sonntag'
+}
+var result = [];
+var item;
+for(var i=0;i<vehicleAvailabilities.length;i++){
+	item = vehicleAvailabilities[i];
+	item.weekday = weekdayMap[parseInt(item.day)];
+	result.push(item);
+}
+console.log(result);
+</script>
+
+</body>
+</html>

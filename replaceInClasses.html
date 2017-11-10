@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Toast Example Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body>
+
+<article>
+   <p>Does your mom know about tomorrow night? Good morning, Mom. Oh, <span class="name">Marty</span>, I almost forgot, <span class="name">Jennifer Parker</span> called. He's alright. Hey c'mon, I had to change, you think I'm going back in that zoot suit? The <a href="https://giphy.com/gifs/film-back-to-the-future-anniversary2015-Y1aL1fxTEbhQs" art="Spooky young man">old man</a> really came through it worked. <a href="https://giphy.com/gifs/FrVlu71LVoVXy" alt="I guess you guys aren't ready for that yet">I have to tell you about the future</a>.</p>
+   
+   <p>He's absolutely right, <span class="name">Marty</span>. the last thing you need is headaches. Well, I guess that's everything. Please note that <span class="name">Einstein's</span> clock is in complete synchronization with my control watch. Good evening, I'm Doctor <span class="name">Emmet Brown</span>, I'm standing here on the parking lot of- What did you sleep in your clothes again last night.</p>
+   <p>Precisely. <span class="name">George</span>,  Hey beat it, spook, this don't concern you. <a href="https://giphy.com/gifs/back-to-the-future-behind-scenes-CdAh3Sh0Mvtdu" alt="I'm flying!">Bet your ass it works.</a> Here you go, lady. There's a quarter.</p>
+</article>
+
+<script>
+
+function replaceNames(className,newName){
+var elements = document.querySelectorAll("."+className);
+for (var i = 0; i < elements.length; i++) {
+	var content = elements[i].innerHTML;
+	if(content!=""){
+		var arr = content.split(" ");
+		if(arr.length >0){
+			arr[0] = newName;
+			content = arr.join(" ");
+			elements[i].innerHTML = content;
+		}
+	}
+}
+}
+
+replaceNames("name","Marty");
+
+
+</script>
+
+</body>
+</html>
